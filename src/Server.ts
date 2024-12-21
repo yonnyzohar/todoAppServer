@@ -20,7 +20,12 @@ class Server {
   }
 
   private configureDatabase(): void {
-    const mongoURI = "mongodb://localhost:27017/todoAppDB";
+    let mongoURI = "mongodb://localhost:27017/todoAppDB";
+
+    if(true)
+    {
+      mongoURI = "mongodb://127.0.0.1:27017/todoAppDB";
+    }
     mongoose.connect(mongoURI)
     .then(() => {
         console.log('Connected to MongoDB');
