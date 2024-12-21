@@ -3,6 +3,7 @@ import cors from "cors";
 import express, { Application } from "express";
 import mongoose from "mongoose";
 import { TodoRoutes } from "./routes/todoRoutes";
+require('dotenv').config();
 
 class Server {
   private app: Application;
@@ -20,12 +21,9 @@ class Server {
   }
 
   private configureDatabase(): void {
-    let mongoURI = "mongodb://localhost:27017/todoAppDB";
+    //"mongodb://localhost:27017/todoAppDB";
+    let mongoURI = process.env.DB_URL || "mongodb://localhost:27017/todoAppDB";
 
-    if(true)
-    {
-      mongoURI = "mongodb://127.0.0.1:27017/todoAppDB";
-    }
     mongoose.connect(mongoURI)
     .then(() => {
         console.log('Connected to MongoDB');
