@@ -2,7 +2,7 @@ require('dotenv').config();
 import Server from './Server';
 
 
-let PORT = process.env.PORT || 5001;
+let PORT = process.env.PORT || 80;
 
 if(typeof PORT === 'string')
 {
